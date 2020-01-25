@@ -1,5 +1,6 @@
 package project.controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 
@@ -12,7 +13,7 @@ public class UrlController {
     }
 
     @GetMapping("/mandalart")
-    public String madalart() {
+    public String madalart(Model model) {
         return "mandalart/mandalart";
     }
 }

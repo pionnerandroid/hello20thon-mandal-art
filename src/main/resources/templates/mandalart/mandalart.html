@@ -3,12 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8"/>
     <title>MANDAL-ART PAGE</title>
-
+    <link rel="stylesheet" th:href="@{/css/base.css}"/>
 </head>
 <body>
 <!-- header flagment ../layout/header.html을 수정하세요. -->
 <div th:replace="layout/header::header"></div>
 
+<div th:text="${uuid}"></div>
 <!-- INDEX BODY를 작성해주세요.-->
 <table>
     <tr>
@@ -28,6 +29,11 @@
     </tr>
 </table>
 <br><br><br>
+
+<div></div>
+
+<input type="button">
+
 <!-- INDEX BODY 끝 -->
 
 
