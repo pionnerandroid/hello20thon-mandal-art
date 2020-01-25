@@ -1,0 +1,11 @@
+/* mandal-art 테이블 구성 */
+.mandalart-table-items ul li {
+    display:inline;
+    border-style: solid;
+
+}
+/* 테이블 디버깅용 border */
+table tr td {
+    border-style: solid;
+
+}

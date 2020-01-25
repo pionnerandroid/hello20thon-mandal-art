@@ -15,7 +15,7 @@
 * [ ] BACKEND (Spring Boot, MySQL)
   * [ ] 새로고침 없이 저장하기
   * [ ] MySQL과 연동
-    * [ ]UUID를 발급하여 URL로 접근할 수 있도록 만들기
+    * [ ] UUID를 발급하여 URL로 접근할 수 있도록 만들기
   * [ ] 관리자 페이지
     * // TODO
 * [ ] FRONTEND (React.js, Gatsby.js)
