@@ -3,28 +3,34 @@ package project.mandalart.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.UUID;
 
-@Table
-@Entity
 @NoArgsConstructor
 @Getter
-public class MandalArt{
+@Table
+@Entity
+public class MandalArt {
     @Id
-    @Column(columnDefinition = "BINARY(16)")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid2")
-    private UUID uuid;
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long mandalId;
 
     @Column
-    private String nothing;
+    @ColumnDefault("1")
+    private Long version;
+
+
+    @Column(nullable = false, columnDefinition = "tinyint default 1")
+    boolean banned = true;
+
+
+    @Column
+    private String routeId;
 
     @Builder
-    public MandalArt(String nothing) {
-//        this.uuid = uuid;
-        this.nothing = nothing;
+    public MandalArt(String routeId) {
+        this.routeId = routeId;
     }
 }

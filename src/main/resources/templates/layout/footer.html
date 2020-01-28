@@ -17,3 +17,12 @@
     </div>
     <!--/footer-->
 </html>
+
+select *
+from mandalart a, mandal_items b, mandal_subitems as `c`
+where a.mandal_id = b.mandal_id
+and
+b.mandal_mainitem_id = c.madal_mainitem_id
+and
+a.madal_id = ?
+
