@@ -3,8 +3,11 @@ package project.mandalart.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.mandalart.domain.MandalArt;
 import project.mandalart.domain.MandalArtRepository;
 import project.mandalart.dto.MandalArtSaveRequestDto;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -14,8 +17,12 @@ public class MandalArtService {
     private final MandalArtRepository mandalArtRepository;
 
     @Transactional
+    public Optional<MandalArt> getMandalArtById(Long mandalId) {
+        return mandalArtRepository.findById(mandalId);
+    }
+
+    @Transactional
     public Long save(MandalArtSaveRequestDto requestDto) {
         return  mandalArtRepository.save(requestDto.toEntity()).getMandalId();
-
     }
 }

@@ -1,11 +1,10 @@
 package project.mandalart.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-
 
 @NoArgsConstructor
 @Getter
@@ -26,4 +25,11 @@ public class MandalItems {
 
     @Column
     private String itemsItem;
+
+    @Builder
+    public MandalItems(MandalArt mandalArt, Long itemsSquare, String itemsItem) {
+        this.mandalArt = mandalArt;
+        this.itemsSquare = itemsSquare;
+        this.itemsItem = itemsItem;
+    }
 }

@@ -12,13 +12,6 @@ public class MandalArtSaveRequestDto {
     private boolean banned;
     private String routId;
 
-//    @Builder
-//    public MandalArtSaveRequestDto(short version, boolean banned, String routId) {
-//        this.version = version;
-//        this.banned = banned;
-//        this.routId = routId;
-//    }
-
     @Builder
     public MandalArtSaveRequestDto(String routId) {
         this.routId = routId;

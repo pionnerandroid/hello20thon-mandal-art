@@ -1,23 +1,35 @@
 package project.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.view.RedirectView;
+import project.mandalart.domain.MandalArt;
+import project.mandalart.dto.MandalArtSaveRequestDto;
+import project.mandalart.dto.MandalItemsSaveRequestDto;
+import project.mandalart.service.MandalArtService;
+import project.mandalart.service.MandalItemsService;
 
+import java.util.Optional;
+
+@RequiredArgsConstructor
 @Controller
 public class UrlController {
+
+    private final MandalArtService mandalArtService;
+    private final MandalItemsService mandalItemsService;
 
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
+    // readDto 로 routeId or mandalId RequestBody 구현
     @GetMapping("/mandalart")
-    public String madalart() {
-
-        return "mandalart/mandalart";
+    public @ResponseBody
+    Optional<MandalArt> getMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
+        // MandalArt, MandalItems, MandalSubItems addAttribute 하자
+        return mandalArtService.getMandalArtById(mandalId);
     }
 
     @PostMapping("/mandalart")
@@ -26,15 +38,17 @@ public class UrlController {
         return "mandalart/mandalart";
     }
 
-
     // mandalItems 저장
     @PostMapping("/mandalart/items")
-    public String createMandalItems(@RequestParam(name = "mandalId", required = false) Long mandalId,
-                                    @RequestParam(name = "itemsSquare") Long itemsSquare,
-                                    @RequestParam(name = "itemsItem") String itemsItem) {
+    public String createMandalItems(@RequestBody MandalItemsSaveRequestDto requestDto, Model model) {
+        // TODO mandalID를 mandal_art_mandal_id에 저장해라
+        // 근데 mandal_art_mandal_id가 MandalArt이다
 
-        System.out.println("createMandalItems" + itemsSquare + " " + itemsItem);
-        return "mandalart/mandalart";
+        // DB 저장
+        mandalArtService.save(new MandalArtSaveRequestDto("aaa"));
+        mandalItemsService.save(requestDto);
+
+        return "mandalart/test";
     }
 
     // subItems 저장
@@ -48,5 +62,4 @@ public class UrlController {
         System.out.println("createMandalSubItems");
         return "mandalart/mandalart";
     }
-
 }
