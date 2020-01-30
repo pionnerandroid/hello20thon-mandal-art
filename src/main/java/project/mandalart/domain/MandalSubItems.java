@@ -12,27 +12,34 @@ import javax.persistence.*;
 @Entity
 @Table
 @JsonIgnoreProperties({"mandalItems"})
-public class MandalSubItems {
+public class MandalSubItems extends BaseTimeEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long subItemsId;
 
+    @Column
+    private Long subSquare;
+
+    @Column(length = 60)
+    private String subTitle;
+
+    @Column(columnDefinition = "TEXT")
+    private String subContent;
+
+    @Column(nullable = false, columnDefinition = "tinyint default 1")
+    boolean enable = true;
+
     @ManyToOne
     @JoinColumn(name = "mandal_items_items_id", foreignKey = @ForeignKey(name = "FK_MANDALSUBITEMS_MANDALITEMSID"))
     private MandalItems mandalItems;
 
-    @Column
-    private Long subSquare;
-
-    @Column
-    private String subItem;
-
     @Builder
-    public MandalSubItems(MandalItems mandalItemsId, Long subSquare, String subItem) {
+    public MandalSubItems(MandalItems mandalItemsId, Long subSquare, String subTitle, String subContent) {
         this.mandalItems = mandalItemsId;
         this.subSquare = subSquare;
-        this.subItem = subItem;
+        this.subTitle = subTitle;
+        this.subContent = subContent;
     }
 
     public void setMandalItems(MandalItems mandalItem) { this.mandalItems = mandalItem; }

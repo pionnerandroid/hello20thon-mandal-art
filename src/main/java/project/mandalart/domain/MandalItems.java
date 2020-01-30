@@ -14,31 +14,37 @@ import java.util.List;
 @Entity
 @Table
 @JsonIgnoreProperties({"mandalArt"})
-public class MandalItems {
+public class MandalItems extends BaseTimeEntity{
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemsId;
 
+    @Column
+    private Long itemsSquare;
+
+    @Column(length = 60)
+    private String itemsTitle;
+
+    @Column(columnDefinition = "TEXT")
+    private String itemsContent;
+
+    @Column(nullable = false, columnDefinition = "tinyint default 1")
+    boolean enable = true;
+
     @OneToMany(mappedBy = "mandalItems", cascade = CascadeType.ALL)
     private List<MandalSubItems> subItems = new ArrayList<>();
 
-//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mandal_art_mandal_id", foreignKey = @ForeignKey(name = "FK_MANDALITEMS_MANDALART"))
     private MandalArt mandalArt;
 
-    @Column
-    private Long itemsSquare;
-
-    @Column
-    private String itemsItem;
-
     @Builder
-    public MandalItems(MandalArt mandalArt, Long itemsSquare, String itemsItem) {
+    public MandalItems(MandalArt mandalArt, Long itemsSquare, String itemsTitle, String itemsContent) {
         this.mandalArt = mandalArt;
         this.itemsSquare = itemsSquare;
-        this.itemsItem = itemsItem;
+        this.itemsTitle = itemsTitle;
+        this.itemsContent = itemsContent;
     }
 
     public MandalItems(Long itemsId) {

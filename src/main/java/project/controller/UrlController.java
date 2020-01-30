@@ -1,5 +1,7 @@
 package project.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,6 @@ import project.mandalart.service.MandalArtService;
 import project.mandalart.service.MandalItemsService;
 import project.mandalart.service.MandalSubItemsService;
 
-import java.util.List;
-import java.util.Optional;
-
 @RequiredArgsConstructor
 @Controller
 public class UrlController {
@@ -26,17 +25,26 @@ public class UrlController {
     private final MandalItemsService itemsService;
     private final MandalSubItemsService subItemsService;
 
+    private final int NO_ID = 0;
+
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
     // readDto 로 routeId or mandalId RequestBody 구현
+    // test code
+//    @GetMapping("/mandalart")
+//    public @ResponseBody
+//    MandalArt getMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
+//        return mandalArtService.getMandalArt(mandalId);
+//    }
+
+
     @GetMapping("/mandalart")
-    public @ResponseBody
-    MandalArt getMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
-        // MandalArt, MandalItems, MandalSubItems addAttribute 하자
-        return mandalArtService.getMandalArt(mandalId);
+    public String mandalArt(@RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
+        model.addAttribute("mandalArt", mandalArtService.getMandalArtToJson(mandalId));
+        return "mandalart/mandalart";
     }
 
     @PostMapping("/mandalart")
@@ -46,20 +54,14 @@ public class UrlController {
     }
 
     // mandalItems 저장
-    @PostMapping("/mandalart/items")
-    public String createMandalItems(@RequestBody MandalItemsSaveRequestDto requestDto, Model model) {
-        // TODO mandalID를 mandal_art_mandal_id에 저장해라
-        // 근데 mandal_art_mandal_id가 MandalArt이다
-
-        // DB 저장
-        mandalArtService.save(new MandalArtSaveRequestDto("aaa"));
+    @PostMapping("/mandalart/items/save")
+    public String createMandalItems(@RequestBody MandalItemsSaveRequestDto requestDto) {
         itemsService.save(requestDto);
-
         return "mandalart/test";
     }
 
     // subItems 저장
-    @PostMapping("/mandalart/subitems")
+    @PostMapping("/mandalart/subitems/save")
     public String createMandalSubItems(@RequestBody MandalSubItemsSaveRequestDto requestDto, Model model) {
         subItemsService.save(requestDto);
         return "mandalart/mandalart";

@@ -11,20 +11,23 @@ import project.mandalart.domain.MandalItems;
 public class MandalItemsSaveRequestDto {
     private Long mandalId;
     private Long itemsSquare;
-    private String itemsItem;
+    private String itemsTitle;
+    private String itemsContent;
 
     @Builder
-    public MandalItemsSaveRequestDto(Long mandalId, Long itemsSquare, String itemsItem) {
+    public MandalItemsSaveRequestDto(Long mandalId, Long itemsSquare, String itemsTitle, String itemsContent) {
         this.mandalId = mandalId;
         this.itemsSquare = itemsSquare;
-        this.itemsItem = itemsItem;
+        this.itemsTitle = itemsTitle;
+        this.itemsContent = itemsContent;
     }
 
     public MandalItems toEntity() {
         return MandalItems.builder()
                 .mandalArt(new MandalArt(mandalId))
                 .itemsSquare(itemsSquare)
-                .itemsItem(itemsItem)
+                .itemsTitle(itemsTitle)
+                .itemsContent(itemsContent)
                 .build();
     }
 }
