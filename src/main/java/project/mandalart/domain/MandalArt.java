@@ -1,12 +1,14 @@
 package project.mandalart.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -18,8 +20,8 @@ public class MandalArt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mandalId;
 
-    @OneToMany(mappedBy = "mandalArt")
-    private Set<MandalItems> itemsSet;
+    @OneToMany(mappedBy = "mandalArt", cascade = CascadeType.ALL)
+    private List<MandalItems> items = new ArrayList<>();
 
     @Column
     @ColumnDefault("1")
@@ -39,5 +41,10 @@ public class MandalArt {
 
     public MandalArt(Long mandalId) {
         this.mandalId = mandalId;
+    }
+
+    public void addItems(MandalItems item) {
+        items.add(item);
+        item.setMandalArt(this);
     }
 }

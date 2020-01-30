@@ -5,11 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import project.mandalart.domain.MandalArt;
+import project.mandalart.domain.MandalArtRepository;
+import project.mandalart.domain.MandalItems;
+import project.mandalart.domain.MandalItemsRepository;
 import project.mandalart.dto.MandalArtSaveRequestDto;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
+import project.mandalart.dto.MandalSubItemsSaveRequestDto;
 import project.mandalart.service.MandalArtService;
 import project.mandalart.service.MandalItemsService;
+import project.mandalart.service.MandalSubItemsService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -17,7 +23,8 @@ import java.util.Optional;
 public class UrlController {
 
     private final MandalArtService mandalArtService;
-    private final MandalItemsService mandalItemsService;
+    private final MandalItemsService itemsService;
+    private final MandalSubItemsService subItemsService;
 
     @GetMapping("/")
     public String index() {
@@ -27,9 +34,9 @@ public class UrlController {
     // readDto 로 routeId or mandalId RequestBody 구현
     @GetMapping("/mandalart")
     public @ResponseBody
-    Optional<MandalArt> getMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
+    MandalArt getMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
         // MandalArt, MandalItems, MandalSubItems addAttribute 하자
-        return mandalArtService.getMandalArtById(mandalId);
+        return mandalArtService.getMandalArt(mandalId);
     }
 
     @PostMapping("/mandalart")
@@ -46,20 +53,15 @@ public class UrlController {
 
         // DB 저장
         mandalArtService.save(new MandalArtSaveRequestDto("aaa"));
-        mandalItemsService.save(requestDto);
+        itemsService.save(requestDto);
 
         return "mandalart/test";
     }
 
     // subItems 저장
     @PostMapping("/mandalart/subitems")
-    public String createMandalSubItems(@RequestParam(name = "mandalId") Long mandalId,
-                                       @RequestParam(name = "itemsId") Long itemsId,
-                                       @RequestParam(name = "itemsSquare") Long itemsSquare,
-                                       @RequestParam(name = "subSquare") Long subSquare,
-                                       @RequestParam(name = "itemsItem") String subItem) {
-
-        System.out.println("createMandalSubItems");
+    public String createMandalSubItems(@RequestBody MandalSubItemsSaveRequestDto requestDto, Model model) {
+        subItemsService.save(requestDto);
         return "mandalart/mandalart";
     }
 }
