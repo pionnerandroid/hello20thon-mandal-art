@@ -33,9 +33,14 @@ public class MandalArtService {
         return new ObjectMapper().writeValueAsString(getMandalArt(mandaId));
     }
 
-
     @Transactional
     public Long save(MandalArtSaveRequestDto requestDto) {
         return mandalArtRepository.save(requestDto.toEntity()).getMandalId();
+    }
+
+    @Transactional
+    public void delete(Long mandalId) {
+        MandalArt mandalArt = mandalArtRepository.findById(mandalId).orElseThrow(() -> new IllegalArgumentException("잘못된 ID입니다!!"));
+        mandalArtRepository.delete(mandalArt);
     }
 }

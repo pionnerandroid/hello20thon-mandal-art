@@ -26,4 +26,12 @@ public class MandalSubItemsSaveRequestDto {
                 .subContent(subContent)
                 .build();
     }
+
+    public Long getItemsId() {
+        return this.itemsId;
+    }
+
+    public void setItemsId(Long itemsId) {
+        this.itemsId = itemsId;
+    }
 }

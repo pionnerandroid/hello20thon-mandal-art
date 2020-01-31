@@ -1,16 +1,10 @@
 package project.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import project.mandalart.domain.MandalArt;
-import project.mandalart.domain.MandalArtRepository;
-import project.mandalart.domain.MandalItems;
-import project.mandalart.domain.MandalItemsRepository;
-import project.mandalart.dto.MandalArtSaveRequestDto;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 import project.mandalart.dto.MandalSubItemsSaveRequestDto;
 import project.mandalart.service.MandalArtService;
@@ -40,10 +34,10 @@ public class UrlController {
 //        return mandalArtService.getMandalArt(mandalId);
 //    }
 
-
     @GetMapping("/mandalart")
     public String mandalArt(@RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
         model.addAttribute("mandalArt", mandalArtService.getMandalArtToJson(mandalId));
+//        System.out.println(mandalArtService.getMandalArtToJson(mandalId));
         return "mandalart/mandalart";
     }
 
@@ -63,7 +57,29 @@ public class UrlController {
     // subItems 저장
     @PostMapping("/mandalart/subitems/save")
     public String createMandalSubItems(@RequestBody MandalSubItemsSaveRequestDto requestDto, Model model) {
+        if (requestDto.getItemsId() == NO_ID) {
+            Long itemsId = itemsService.saveEmptyMandalItems();
+            requestDto.setItemsId(itemsId);
+        }
         subItemsService.save(requestDto);
+        return "mandalart/mandalart";
+    }
+
+    @DeleteMapping("/mandalart/delete")
+    public String deleteMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
+        mandalArtService.delete(mandalId);
+        return "mandalart/mandalart";
+    }
+
+    @DeleteMapping("/mandalart/items/delete")
+    public String deleteMandalItems(@RequestParam(name = "itemsId") Long itemsId) {
+        itemsService.delete(itemsId);
+        return "mandalart/mandalart";
+    }
+
+    @DeleteMapping("/mandalart/subitems/delete")
+    public String deleteSubItems(@RequestParam(name = "subItemsId") Long subItemsId) {
+        subItemsService.delete(subItemsId);
         return "mandalart/mandalart";
     }
 }

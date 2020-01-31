@@ -11,10 +11,10 @@ import java.util.List;
 
 @NoArgsConstructor
 @Getter
+@JsonIgnoreProperties({"mandalArt"})
 @Entity
 @Table
-@JsonIgnoreProperties({"mandalArt"})
-public class MandalItems extends BaseTimeEntity{
+public class MandalItems extends BaseTimeEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class MandalItems extends BaseTimeEntity{
     @Column(nullable = false, columnDefinition = "tinyint default 1")
     boolean enable = true;
 
-    @OneToMany(mappedBy = "mandalItems", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mandalItems")
     private List<MandalSubItems> subItems = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -47,13 +47,29 @@ public class MandalItems extends BaseTimeEntity{
         this.itemsContent = itemsContent;
     }
 
+    @Builder
+    public MandalItems(Long itemsId, MandalArt mandalArt, Long itemsSquare, String itemsTitle, String itemsContent) {
+        this.itemsId = itemsId;
+        this.mandalArt = mandalArt;
+        this.itemsSquare = itemsSquare;
+        this.itemsTitle = itemsTitle;
+        this.itemsContent = itemsContent;
+    }
+
     public MandalItems(Long itemsId) {
         this.itemsId = itemsId;
     }
 
-
     public void setMandalArt(MandalArt mandalArt) {
         this.mandalArt = mandalArt;
+    }
+
+    public void setItemsTitle(String itemsTitle) {
+        this.itemsTitle = itemsTitle;
+    }
+
+    public void setItemsContent(String itemsContent) {
+        this.itemsContent = itemsContent;
     }
 
     public void addSubItems(MandalSubItems subItem) {

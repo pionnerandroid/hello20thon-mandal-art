@@ -30,7 +30,7 @@ public class MandalSubItems extends BaseTimeEntity {
     @Column(nullable = false, columnDefinition = "tinyint default 1")
     boolean enable = true;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mandal_items_items_id", foreignKey = @ForeignKey(name = "FK_MANDALSUBITEMS_MANDALITEMSID"))
     private MandalItems mandalItems;
 
@@ -39,6 +39,14 @@ public class MandalSubItems extends BaseTimeEntity {
         this.mandalItems = mandalItemsId;
         this.subSquare = subSquare;
         this.subTitle = subTitle;
+        this.subContent = subContent;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
+
+    public void setSubContent(String subContent) {
         this.subContent = subContent;
     }
 

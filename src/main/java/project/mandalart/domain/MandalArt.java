@@ -1,10 +1,8 @@
 package project.mandalart.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,13 +18,8 @@ public class MandalArt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mandalId;
 
-    @OneToMany(mappedBy = "mandalArt", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mandalArt")
     private List<MandalItems> items = new ArrayList<>();
-
-    @Column
-    @ColumnDefault("1")
-    private Long version;
-
 
     @Column(nullable = false, columnDefinition = "tinyint default 0")
     boolean banned = false;
