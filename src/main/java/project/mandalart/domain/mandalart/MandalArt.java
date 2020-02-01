@@ -3,6 +3,7 @@ package project.mandalart.domain.mandalart;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import project.mandalart.domain.user.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,6 +22,10 @@ public class MandalArt {
     @OneToMany(mappedBy = "mandalArt")
     private List<MandalItems> items = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_MANDALART_USER"))
+    private User user;
+
     @Column(nullable = false, columnDefinition = "tinyint default 0")
     boolean banned = false;
 
@@ -28,12 +33,17 @@ public class MandalArt {
     private String routeId;
 
     @Builder
-    public MandalArt(String routeId) {
+    public MandalArt(User user, String routeId) {
+        this.user = user;
         this.routeId = routeId;
     }
 
     public MandalArt(Long mandalId) {
         this.mandalId = mandalId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void addItems(MandalItems item) {

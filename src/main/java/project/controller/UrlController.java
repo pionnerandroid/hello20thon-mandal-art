@@ -5,15 +5,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+import project.mandalart.config.auth.LoginUser;
 import project.mandalart.config.auth.dto.SessionUser;
-import project.mandalart.domain.user.User;
+import project.mandalart.domain.mandalart.MandalArt;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 import project.mandalart.dto.MandalSubItemsSaveRequestDto;
 import project.mandalart.service.MandalArtService;
 import project.mandalart.service.MandalItemsService;
 import project.mandalart.service.MandalSubItemsService;
-
-import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
@@ -22,15 +21,12 @@ public class UrlController {
     private final MandalArtService mandalArtService;
     private final MandalItemsService itemsService;
     private final MandalSubItemsService subItemsService;
-    private final HttpSession httpSession;
 
     private final int NO_ID = 0;
 
     @GetMapping("/")
-    public String index(Model model) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    public String index(Model model, @LoginUser SessionUser user) {
 
-//        model.addAttribute("userName", user.getName());
         if (user != null) {
             model.addAttribute("userName", user.getName());
         }
@@ -46,52 +42,71 @@ public class UrlController {
 //        return mandalArtService.getMandalArt(mandalId);
 //    }
 
-    @GetMapping("/mandalart")
-    public String mandalArt(@RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
-        model.addAttribute("mandalArt", mandalArtService.getMandalArtToJson(mandalId));
-//        System.out.println(mandalArtService.getMandalArtToJson(mandalId));
+    @GetMapping("/mandalart/{userId}/{mandalId}")
+    public String mandalArt(@PathVariable("userId") Long userId,
+                            @RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
+        String mandalArt = mandalArtService.getMandalArtToJson(userId, mandalId);
+        model.addAttribute("mandalart", mandalArt);
         return "mandalart/mandalart";
     }
 
-    @PostMapping("/mandalart")
-    public String createRouteId(@RequestParam(name = "routeId") String routeId) {
-        System.out.println("createRouteId");
-        return "mandalart/mandalart";
+    @PostMapping("/mandalart/{userId}/{mandalId}")
+    public @ResponseBody
+    MandalArt createRouteId(@PathVariable("userId") Long userId,
+                            @PathVariable("mandalId") Long mandalId,
+                            @RequestParam(name = "routeId") String routeId) {
+
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 
     // mandalItems 저장
-    @PostMapping("/mandalart/items/save")
-    public String createMandalItems(@RequestBody MandalItemsSaveRequestDto requestDto) {
+    @PostMapping("/mandalart/items/save/{userId}/{mandalId}")
+    public @ResponseBody
+    MandalArt createMandalItems(@PathVariable("userId") Long userId,
+                                @PathVariable("mandalId") Long mandalId,
+                                @RequestBody MandalItemsSaveRequestDto requestDto) {
         itemsService.save(requestDto);
-        return "mandalart/test";
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 
     // subItems 저장
-    @PostMapping("/mandalart/subitems/save")
-    public String createMandalSubItems(@RequestBody MandalSubItemsSaveRequestDto requestDto, Model model) {
+    @PostMapping("/mandalart/subitems/save/{userId}/{mandalId}")
+    public @ResponseBody
+    MandalArt createMandalSubItems(@PathVariable("userId") Long userId,
+                                   @PathVariable("mandalId") Long mandalId,
+                                   @RequestBody MandalSubItemsSaveRequestDto requestDto) {
         if (requestDto.getItemsId() == NO_ID) {
             Long itemsId = itemsService.saveEmptyMandalItems();
             requestDto.setItemsId(itemsId);
         }
         subItemsService.save(requestDto);
-        return "mandalart/mandalart";
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 
-    @DeleteMapping("/mandalart/delete")
-    public String deleteMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
+    @DeleteMapping("/mandalart/delete/{userId}/{mandalId}")
+    public @ResponseBody
+    MandalArt deleteMandalArt(@PathVariable("userId") Long userId,
+                              @PathVariable("mandalId") Long mandalId) {
+//                              @RequestParam(name = "mandalId") Long mandalId) {
         mandalArtService.delete(mandalId);
-        return "mandalart/mandalart";
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 
-    @DeleteMapping("/mandalart/items/delete")
-    public String deleteMandalItems(@RequestParam(name = "itemsId") Long itemsId) {
+    @DeleteMapping("/mandalart/items/delete/{userId}/{mandalId}")
+    public @ResponseBody
+    MandalArt deleteMandalItems(@PathVariable("userId") Long userId,
+                                @PathVariable("mandalId") Long mandalId,
+                                @RequestParam(name = "itemsId") Long itemsId) {
         itemsService.delete(itemsId);
-        return "mandalart/mandalart";
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 
-    @DeleteMapping("/mandalart/subitems/delete")
-    public String deleteSubItems(@RequestParam(name = "subItemsId") Long subItemsId) {
+    @DeleteMapping("/mandalart/subitems/delete/{userId}/{mandalId}")
+    public @ResponseBody
+    MandalArt deleteSubItems(@PathVariable("userId") Long userId,
+                             @PathVariable("mandalId") Long mandalId,
+                             @RequestParam(name = "subItemsId") Long subItemsId) {
         subItemsService.delete(subItemsId);
-        return "mandalart/mandalart";
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 }

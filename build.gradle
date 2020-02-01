@@ -44,13 +44,8 @@ dependencies {
 	annotationProcessor ('org.projectlombok:lombok:1.18.10')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	testCompile('org.springframework.security:spring-security-test')
-//	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-oauth2-client')
-//	compile('org.springframework.boot:spring-security-boot-oauth2-client')
-//	compile('org.springframework.security:spring-security-oauth2-client')
-//	compile('prg.springframework.security:spring-security-oauth2-jose')
-//	compile ('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.1.BUILD-RELEASE')
-//	compile ('org.springframework.cloud:spring-cloud-security:2.0.0.M3')
+	compile('org.springframework.session:spring-session-jdbc')
     
 	
 	/* Web 

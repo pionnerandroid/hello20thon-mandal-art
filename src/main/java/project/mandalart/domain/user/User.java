@@ -4,8 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.mandalart.domain.BaseTimeEntity;
+import project.mandalart.domain.mandalart.MandalArt;
+import project.mandalart.domain.mandalart.MandalItems;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -28,6 +32,9 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<MandalArt> mandalArts = new ArrayList<>();
+
     @Builder
     public User(String name, String email, String picture, Role role) {
         this.name = name;
@@ -43,7 +50,16 @@ public class User extends BaseTimeEntity {
         return this;
     }
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     public String getRoleKey() {
         return this.role.getKey();
+    }
+
+    public void addMandalArts(MandalArt mandalArt) {
+        mandalArts.add(mandalArt);
+        mandalArt.setUser(this);
     }
 }

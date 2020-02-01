@@ -7,31 +7,33 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.mandalart.domain.mandalart.MandalArt;
 import project.mandalart.domain.mandalart.MandalArtRepository;
+import project.mandalart.dto.MandalArtNoLoginSaveRequestDto;
 import project.mandalart.dto.MandalArtSaveRequestDto;
 
 @RequiredArgsConstructor
 @Service
 public class MandalArtService {
-    // final이 붙은 필드를 생성자에 넣음으로써 Bean을 주입한다.
-    // 직접 @Autowired 어노테이션을 붙이거나 setter를 작성해서 Bean주입도 가능하다.
+
     private final MandalArtRepository mandalArtRepository;
 
     private final int NO_ID = 0;
 
-    /*
-     * MandalArt가 없을 때 새로 생성해준다.
-     * MandalArt가 있을 때는 SELECT해서 보내준다.
-     */
-    @Transactional(readOnly = true)
-    public MandalArt getMandalArt(Long mandalId) {
-        if (mandalId == NO_ID) return mandalArtRepository.save(new MandalArtSaveRequestDto().toEntity());
+    @Transactional
+    public MandalArt getMandalArt(Long userId, Long mandalId) {
+
+        if (IdValidation.isNoId(userId) && IdValidation.isNoId(mandalId)) {
+            return mandalArtRepository.save(new MandalArtNoLoginSaveRequestDto().toEntity());
+        } else if (!IdValidation.isNoId(userId) && IdValidation.isNoId(mandalId)) {
+            return mandalArtRepository.save(new MandalArtSaveRequestDto(userId).toEntity());
+        }
+
 
         return mandalArtRepository.findById(mandalId).orElseThrow(() -> new IllegalArgumentException("잘못된 ID입니다!"));
     }
 
-    @Transactional(readOnly = true)
-    public String getMandalArtToJson(Long mandaId) throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(getMandalArt(mandaId));
+    @Transactional
+    public String getMandalArtToJson(Long userId, Long mandaId) throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(getMandalArt(userId, mandaId));
     }
 
     @Transactional
