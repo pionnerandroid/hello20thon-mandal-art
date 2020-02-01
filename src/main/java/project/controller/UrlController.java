@@ -10,6 +10,7 @@ import project.mandalart.config.auth.dto.SessionUser;
 import project.mandalart.domain.mandalart.MandalArt;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 import project.mandalart.dto.MandalSubItemsSaveRequestDto;
+import project.mandalart.service.IdValidation;
 import project.mandalart.service.MandalArtService;
 import project.mandalart.service.MandalItemsService;
 import project.mandalart.service.MandalSubItemsService;
@@ -34,23 +35,10 @@ public class UrlController {
         return "index";
     }
 
-    // readDto 로 routeId or mandalId RequestBody 구현
-    // test code
-//    @GetMapping("/mandalart")
-//    public @ResponseBody
-//    MandalArt getMandalArt(@RequestParam(name = "mandalId") Long mandalId) {
-//        return mandalArtService.getMandalArt(mandalId);
-//    }
-
     @GetMapping("/mandalart/{userId}/{mandalId}")
     public @ResponseBody
     MandalArt mandalArt(@PathVariable("userId") Long userId,
-                        @PathVariable("mandalId") Long mandalId) throws JsonProcessingException {
-        // @RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
-        // String mandalArt = mandalArtService.getMandalArtToJson(userId, mandalId);
-        // System.out.println(mandalArt);
-        // model.addAttribute("mandalart", mandalArt);
-        // return "mandalart/mandalart";
+                        @PathVariable("mandalId") Long mandalId) {
         return mandalArtService.getMandalArt(userId, mandalId);
     }
 
@@ -59,30 +47,43 @@ public class UrlController {
     MandalArt createRouteId(@PathVariable("userId") Long userId,
                             @PathVariable("mandalId") Long mandalId,
                             @RequestParam(name = "routeId") String routeId) {
-
         return mandalArtService.getMandalArt(userId, mandalId);
     }
 
     // mandalItems 저장
-    @PostMapping("/mandalart/items/save/{userId}")
+    @PostMapping("/mandalart/items/save/{userId}/{itemsId}")
     public @ResponseBody
     MandalArt createMandalItems(@PathVariable("userId") Long userId,
+                                @PathVariable("itemsId") Long itemsId,
                                 @RequestBody MandalItemsSaveRequestDto requestDto) {
-        itemsService.save(requestDto);
+        if (IdValidation.isNoId(itemsId)) {
+            itemsService.save(requestDto);
+            return mandalArtService.getMandalArt(userId, requestDto.getMandalId());
+        }
+
+        itemsService.update(itemsId, requestDto);
+
         return mandalArtService.getMandalArt(userId, requestDto.getMandalId());
     }
 
     // subItems 저장
-    @PostMapping("/mandalart/subitems/save/{userId}/{mandalId}")
+    @PostMapping("/mandalart/subitems/save/{userId}/{mandalId}/{subItemsId}")
     public @ResponseBody
     MandalArt createMandalSubItems(@PathVariable("userId") Long userId,
                                    @PathVariable("mandalId") Long mandalId,
+                                   @PathVariable("subItemsId") Long subItemsId,
                                    @RequestBody MandalSubItemsSaveRequestDto requestDto) {
-        if (requestDto.getItemsId() == NO_ID) {
+        if (IdValidation.isNoId(requestDto.getItemsId())) {
             Long itemsId = itemsService.saveEmptyMandalItems();
             requestDto.setItemsId(itemsId);
         }
-        subItemsService.save(requestDto);
+
+        if (IdValidation.isNoId(subItemsId)) {
+            subItemsService.save(requestDto);
+            return mandalArtService.getMandalArt(userId, mandalId);
+        }
+
+        subItemsService.update(subItemsId, requestDto);
         return mandalArtService.getMandalArt(userId, mandalId);
     }
 

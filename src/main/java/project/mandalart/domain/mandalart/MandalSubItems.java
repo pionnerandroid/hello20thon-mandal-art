@@ -43,6 +43,11 @@ public class MandalSubItems extends BaseTimeEntity {
         this.subContent = subContent;
     }
 
+    public void update(String subTitle, String subContent) {
+        this.subTitle = subTitle;
+        this.subContent = subContent;
+    }
+
     public void delete() {
         this.subContent = null;
         this.subTitle = null;

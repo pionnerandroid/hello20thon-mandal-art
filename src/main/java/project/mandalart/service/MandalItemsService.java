@@ -18,6 +18,14 @@ public class MandalItemsService {
     }
 
     @Transactional
+    public Long update(Long itemsId, MandalItemsSaveRequestDto requestDto) {
+        MandalItems mandalItem = mandalItemsRepository.findById(itemsId).orElseThrow(() -> new IllegalArgumentException("잘못된 ID입니다"));
+        mandalItem.update(requestDto.getItemsTitle(), requestDto.getItemsContent());
+        return itemsId;
+    }
+
+
+    @Transactional
     public Long saveEmptyMandalItems() {
         return mandalItemsRepository.save(new MandalItems()).getItemsId();
     }
@@ -26,6 +34,5 @@ public class MandalItemsService {
     public void delete(Long itemsId) {
         MandalItems mandalItems = mandalItemsRepository.findById(itemsId).orElseThrow(() -> new IllegalArgumentException("잘못된 ID 입니다!!"));
         mandalItems.delete();
-        mandalItemsRepository.save(mandalItems);
     }
 }

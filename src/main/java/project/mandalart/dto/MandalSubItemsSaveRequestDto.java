@@ -1,9 +1,13 @@
 package project.mandalart.dto;
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import project.mandalart.domain.mandalart.MandalItems;
 import project.mandalart.domain.mandalart.MandalSubItems;
 
+@NoArgsConstructor
+@Getter
 public class MandalSubItemsSaveRequestDto {
     private Long itemsId;
     private Long subSquare;
