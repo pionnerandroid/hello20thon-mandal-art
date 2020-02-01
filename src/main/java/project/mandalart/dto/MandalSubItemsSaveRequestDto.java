@@ -1,8 +1,8 @@
 package project.mandalart.dto;
 
 import lombok.Builder;
-import project.mandalart.domain.MandalItems;
-import project.mandalart.domain.MandalSubItems;
+import project.mandalart.domain.mandalart.MandalItems;
+import project.mandalart.domain.mandalart.MandalSubItems;
 
 public class MandalSubItemsSaveRequestDto {
     private Long itemsId;

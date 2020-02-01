@@ -3,8 +3,8 @@ package project.mandalart.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.mandalart.domain.MandalItems;
-import project.mandalart.domain.MandalItemsRepository;
+import project.mandalart.domain.mandalart.MandalItems;
+import project.mandalart.domain.mandalart.MandalItemsRepository;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 
 @RequiredArgsConstructor
@@ -25,10 +25,7 @@ public class MandalItemsService {
     @Transactional
     public void delete(Long itemsId) {
         MandalItems mandalItems = mandalItemsRepository.getOne(itemsId);
-
-        mandalItems.setItemsTitle(null);
-        mandalItems.setItemsContent(null);
-
+        mandalItems.delete();
         mandalItemsRepository.save(mandalItems);
     }
 }

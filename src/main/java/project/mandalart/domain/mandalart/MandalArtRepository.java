@@ -1,4 +1,4 @@
-package project.mandalart.domain;
+package project.mandalart.domain.mandalart;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

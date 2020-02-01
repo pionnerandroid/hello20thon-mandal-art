@@ -3,8 +3,8 @@ package project.mandalart.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import project.mandalart.domain.MandalArt;
-import project.mandalart.domain.MandalItems;
+import project.mandalart.domain.mandalart.MandalArt;
+import project.mandalart.domain.mandalart.MandalItems;
 
 @Getter
 @NoArgsConstructor

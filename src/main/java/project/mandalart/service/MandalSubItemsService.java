@@ -3,9 +3,8 @@ package project.mandalart.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.mandalart.domain.MandalItems;
-import project.mandalart.domain.MandalSubItems;
-import project.mandalart.domain.MandalSubItemsRepository;
+import project.mandalart.domain.mandalart.MandalSubItems;
+import project.mandalart.domain.mandalart.MandalSubItemsRepository;
 import project.mandalart.dto.MandalSubItemsSaveRequestDto;
 
 @RequiredArgsConstructor

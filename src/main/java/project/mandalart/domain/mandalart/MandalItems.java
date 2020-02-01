@@ -1,9 +1,10 @@
-package project.mandalart.domain;
+package project.mandalart.domain.mandalart;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import project.mandalart.domain.BaseTimeEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -64,12 +65,17 @@ public class MandalItems extends BaseTimeEntity {
         this.mandalArt = mandalArt;
     }
 
-    public void setItemsTitle(String itemsTitle) {
-        this.itemsTitle = itemsTitle;
-    }
+//    public void setItemsTitle(String itemsTitle) {
+//        this.itemsTitle = itemsTitle;
+//    }
+//
+//    public void setItemsContent(String itemsContent) {
+//        this.itemsContent = itemsContent;
+//    }
 
-    public void setItemsContent(String itemsContent) {
-        this.itemsContent = itemsContent;
+    public void delete() {
+        this.itemsTitle = null;
+        this.itemsContent = null;
     }
 
     public void addSubItems(MandalSubItems subItem) {

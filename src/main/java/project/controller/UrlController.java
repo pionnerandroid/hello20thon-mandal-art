@@ -5,11 +5,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+import project.mandalart.config.auth.dto.SessionUser;
+import project.mandalart.domain.user.User;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 import project.mandalart.dto.MandalSubItemsSaveRequestDto;
 import project.mandalart.service.MandalArtService;
 import project.mandalart.service.MandalItemsService;
 import project.mandalart.service.MandalSubItemsService;
+
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
@@ -18,11 +22,19 @@ public class UrlController {
     private final MandalArtService mandalArtService;
     private final MandalItemsService itemsService;
     private final MandalSubItemsService subItemsService;
+    private final HttpSession httpSession;
 
     private final int NO_ID = 0;
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+//        model.addAttribute("userName", user.getName());
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
     }
 

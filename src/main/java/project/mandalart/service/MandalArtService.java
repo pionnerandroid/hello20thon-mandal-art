@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.mandalart.domain.*;
+import project.mandalart.domain.mandalart.MandalArt;
+import project.mandalart.domain.mandalart.MandalArtRepository;
 import project.mandalart.dto.MandalArtSaveRequestDto;
 
 @RequiredArgsConstructor

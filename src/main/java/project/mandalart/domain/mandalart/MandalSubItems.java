@@ -1,9 +1,10 @@
-package project.mandalart.domain;
+package project.mandalart.domain.mandalart;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import project.mandalart.domain.BaseTimeEntity;
 
 import javax.persistence.*;
 

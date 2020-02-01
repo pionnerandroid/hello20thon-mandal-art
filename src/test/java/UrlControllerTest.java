@@ -8,8 +8,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import project.mandalart.domain.MandalItems;
-import project.mandalart.domain.MandalItemsRepository;
+import project.mandalart.domain.mandalart.MandalItems;
+import project.mandalart.domain.mandalart.MandalItemsRepository;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 
 import java.util.List;

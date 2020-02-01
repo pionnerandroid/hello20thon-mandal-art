@@ -1,7 +1,7 @@
 package project.mandalart.dto;
 
 import lombok.Getter;
-import project.mandalart.domain.MandalItems;
+import project.mandalart.domain.mandalart.MandalItems;
 
 @Getter
 public class MandalItemsResponseDto {
