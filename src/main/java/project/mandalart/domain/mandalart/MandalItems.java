@@ -36,7 +36,7 @@ public class MandalItems extends BaseTimeEntity {
     @OneToMany(mappedBy = "mandalItems")
     private List<MandalSubItems> subItems = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "mandal_art_mandal_id", foreignKey = @ForeignKey(name = "FK_MANDALITEMS_MANDALART"))
     private MandalArt mandalArt;
 

@@ -1,5 +1,6 @@
 package project.mandalart.domain.mandalart;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,9 @@ public class MandalArt {
     @OneToMany(mappedBy = "mandalArt")
     private List<MandalItems> items = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_MANDALART_USER"))
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User user;
 
     @Column(nullable = false, columnDefinition = "tinyint default 0")

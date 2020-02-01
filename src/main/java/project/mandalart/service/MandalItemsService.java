@@ -24,7 +24,7 @@ public class MandalItemsService {
 
     @Transactional
     public void delete(Long itemsId) {
-        MandalItems mandalItems = mandalItemsRepository.getOne(itemsId);
+        MandalItems mandalItems = mandalItemsRepository.findById(itemsId).orElseThrow(() -> new IllegalArgumentException("잘못된 ID 입니다!!"));
         mandalItems.delete();
         mandalItemsRepository.save(mandalItems);
     }

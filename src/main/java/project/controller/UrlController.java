@@ -43,11 +43,15 @@ public class UrlController {
 //    }
 
     @GetMapping("/mandalart/{userId}/{mandalId}")
-    public String mandalArt(@PathVariable("userId") Long userId,
-                            @RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
-        String mandalArt = mandalArtService.getMandalArtToJson(userId, mandalId);
-        model.addAttribute("mandalart", mandalArt);
-        return "mandalart/mandalart";
+    public @ResponseBody
+    MandalArt mandalArt(@PathVariable("userId") Long userId,
+                        @PathVariable("mandalId") Long mandalId) throws JsonProcessingException {
+        // @RequestParam(name = "mandalId") Long mandalId, Model model) throws JsonProcessingException {
+        // String mandalArt = mandalArtService.getMandalArtToJson(userId, mandalId);
+        // System.out.println(mandalArt);
+        // model.addAttribute("mandalart", mandalArt);
+        // return "mandalart/mandalart";
+        return mandalArtService.getMandalArt(userId, mandalId);
     }
 
     @PostMapping("/mandalart/{userId}/{mandalId}")
@@ -60,13 +64,12 @@ public class UrlController {
     }
 
     // mandalItems 저장
-    @PostMapping("/mandalart/items/save/{userId}/{mandalId}")
+    @PostMapping("/mandalart/items/save/{userId}")
     public @ResponseBody
     MandalArt createMandalItems(@PathVariable("userId") Long userId,
-                                @PathVariable("mandalId") Long mandalId,
                                 @RequestBody MandalItemsSaveRequestDto requestDto) {
         itemsService.save(requestDto);
-        return mandalArtService.getMandalArt(userId, mandalId);
+        return mandalArtService.getMandalArt(userId, requestDto.getMandalId());
     }
 
     // subItems 저장
@@ -84,12 +87,10 @@ public class UrlController {
     }
 
     @DeleteMapping("/mandalart/delete/{userId}/{mandalId}")
-    public @ResponseBody
-    MandalArt deleteMandalArt(@PathVariable("userId") Long userId,
-                              @PathVariable("mandalId") Long mandalId) {
-//                              @RequestParam(name = "mandalId") Long mandalId) {
+    public String deleteMandalArt(@PathVariable("userId") Long userId,
+                                  @PathVariable("mandalId") Long mandalId) {
         mandalArtService.delete(mandalId);
-        return mandalArtService.getMandalArt(userId, mandalId);
+        return "/";
     }
 
     @DeleteMapping("/mandalart/items/delete/{userId}/{mandalId}")
