@@ -43,4 +43,14 @@
 <div th:replace="layout/footer::footer"></div>
 
 </body>
+
+<script th:inline="javascript">
+    const mandalart = [[${mandalart}]]
+    const jsonStr = JSON.stringify(mandalart);
+    const map = new Map(JSON.parse(jsonStr));
+
+    map.forEach((value, key) => console.log(value,key));
+
+</script>
+
 </html>

@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import project.mandalart.config.auth.LoginUser;
-import project.mandalart.config.auth.dto.SessionUser;
 import project.mandalart.domain.mandalart.MandalArt;
 import project.mandalart.dto.MandalItemsSaveRequestDto;
 import project.mandalart.dto.MandalSubItemsSaveRequestDto;
@@ -25,20 +23,16 @@ public class UrlController {
     private final int NO_ID = 0;
 
     @GetMapping("/")
-    public String index(Model model, @LoginUser SessionUser user) {
-
-        if (user != null) {
-            model.addAttribute("userName", user.getName());
-        }
-
+//    public String index(Model model, @LoginUser SessionUser user) {
+    public String index() {
         return "index";
     }
 
     @GetMapping("/mandalart/{userId}/{mandalId}")
-    public @ResponseBody
-    MandalArt mandalArt(@PathVariable("userId") Long userId,
-                        @PathVariable("mandalId") Long mandalId) {
-        return mandalArtService.getMandalArt(userId, mandalId);
+    public String mandalArt(@PathVariable("userId") Long userId,
+                            @PathVariable("mandalId") Long mandalId, Model model) {
+        model.addAttribute("mandalart", mandalArtService.getMandalArtToJson(userId,mandalId));
+        return "mandalart/mandalart";
     }
 
     @PostMapping("/mandalart/{userId}/{mandalId}")
