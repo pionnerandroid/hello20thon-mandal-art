@@ -28,8 +28,8 @@ public class UrlController {
 
     @GetMapping("/mandalart/{userId}/{mandalId}")
     public String mandalArt(@PathVariable("userId") Long userId,
-                            @PathVariable("mandalId") Long mandalId) {
-        System.out.println(mandalArtService.save(userId, mandalId));
+                            @PathVariable("mandalId") Long mandalId, Model model) {
+        model.addAttribute("mandalart", mandalArtService.findMandalArtById(mandalId));
         return "mandalart/mandalart";
     }
 }
