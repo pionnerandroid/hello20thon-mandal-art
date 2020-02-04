@@ -44,11 +44,12 @@ dependencies {
 	annotationProcessor ('org.projectlombok:lombok:1.18.10')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	testCompile('org.springframework.security:spring-security-test')
-	compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+//	compile('org.springframework.boot:spring-boot-starter-oauth2-client')
 	compile('org.springframework.session:spring-session-jdbc')
 //	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.mariadb.jdbc:mariadb-java-client')
-	
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
 	/* Web 
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-hateoas')

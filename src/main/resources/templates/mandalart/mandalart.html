@@ -9,28 +9,40 @@
 <!-- header flagment ../layout/header.html을 수정하세요. -->
 <div th:replace="layout/header::header"></div>
 
-<!--<div th:text="${uuid}"></div>-->
-<!-- INDEX BODY를 작성해주세요.-->
-<!--<table>-->
-<!--    <tr>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--        <td><div th:replace="layout/table::table"></div></td>-->
-<!--    </tr>-->
-<!--</table>-->
+<div th:text="${uuid}"></div>
+ INDEX BODY를 작성해주세요.
 <br><br><br>
 
+<form action="#" th:action="@{/mandalart}" th:object="${mandalart}" method="post">
+    <table>
+        <tr>
+            <ul>
+                <li>
+                    <p>
+                        <input type="text" th:filed="*{item11}" th:value="${item11}">
+                    </p>
+                </li>
+                <li>
 
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+
+
+
+
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
 
 <div></div>
 
@@ -45,11 +57,9 @@
 </body>
 
 <script th:inline="javascript">
-    const mandalart = [[${mandalart}]]
-    const jsonStr = JSON.stringify(mandalart);
-    const map = new Map(JSON.parse(jsonStr));
-
-    map.forEach((value, key) => console.log(value,key));
+    const mandalart = [[${mandalart}]];
+    const parse = JSON.parse(mandalart)
+    const itemsParse = JSON.parse(parse.items)
 
 </script>
 

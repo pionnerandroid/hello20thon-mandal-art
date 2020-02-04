@@ -10,7 +10,7 @@ import project.mandalart.domain.user.Role;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CustomOAuth2UserService customOAuth2UserService;
+//    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -19,16 +19,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
+//                    .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
                     .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
                     .antMatchers("/mandalart/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .logout()
-                        .logoutSuccessUrl("/")
-                .and()
-                    .oauth2Login()
-                        .userInfoEndpoint()
-                            .userService(customOAuth2UserService);
+                        .logoutSuccessUrl("/");
+//                .and()
+//                    .oauth2Login()
+//                        .userInfoEndpoint()
+//                            .userService(customOAuth2UserService);
     }
 }
