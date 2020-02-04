@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8"/>
     <title>MANDAL-ART PAGE</title>
     <link rel="stylesheet" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 </head>
 <body>
 <!-- header flagment ../layout/header.html을 수정하세요. -->
@@ -13,206 +13,201 @@
     <input type="hidden" th:name="id" th:value="${mandalart.id}">
     <input type="hidden" th:name="routeId" th:value="${mandalart.routeId}">
     <input type="hidden" th:name="banned" th:value="${mandalart.banned}">
-    <table>
-        <tr>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item11" th:value="*{item11}"></li>
-                        <li><input th:name="item12" th:value="${mandalart.item12}"></li>
-                        <li><input th:name="item13" th:value="${mandalart.item13}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item14" th:value="${mandalart.item14}"></li>
-                        <li><input th:value="${mandalart.item51}" readonly></li>
-                        <li><input th:name="item16" th:value="${mandalart.item16}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item17" th:value="${mandalart.item17}"></li>
-                        <li><input th:name="item18" th:value="${mandalart.item18}"></li>
-                        <li><input th:name="item19" th:value="${mandalart.item19}"></li>
-                    </ul>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item21" th:value="${mandalart.item21}"></li>
-                        <li><input th:name="item22" th:value="${mandalart.item22}"></li>
-                        <li><input th:name="item23" th:value="${mandalart.item23}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item24" th:value="${mandalart.item24}"></li>
-                        <li><input th:value="${mandalart.item52}" readonly></li>
-                        <li><input th:name="item26" th:value="${mandalart.item26}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item27" th:value="${mandalart.item27}"></li>
-                        <li><input th:name="item28" th:value="${mandalart.item28}"></li>
-                        <li><input th:name="item29" th:value="${mandalart.item29}"></li>
-                    </ul>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item31" th:value="${mandalart.item31}"></li>
-                        <li><input th:name="item32" th:value="${mandalart.item32}"></li>
-                        <li><input th:name="item33" th:value="${mandalart.item33}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item34" th:value="${mandalart.item34}"></li>
-                        <li><input th:value="${mandalart.item53}" readonly></li>
-                        <li><input th:name="item36" th:value="${mandalart.item36}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item37" th:value="${mandalart.item37}"></li>
-                        <li><input th:name="item38" th:value="${mandalart.item38}"></li>
-                        <li><input th:name="item39" th:value="${mandalart.item39}"></li>
-                    </ul>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item41" th:value="${mandalart.item41}"></li>
-                        <li><input th:name="item42" th:value="${mandalart.item42}"></li>
-                        <li><input th:name="item43" th:value="${mandalart.item43}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item44" th:value="${mandalart.item44}"></li>
-                        <li><input th:value="${mandalart.item54}" readonly></li>
-                        <li><input th:name="item46" th:value="${mandalart.item46}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item47" th:value="${mandalart.item47}"></li>
-                        <li><input th:name="item48" th:value="${mandalart.item48}"></li>
-                        <li><input th:name="item49" th:value="${mandalart.item49}"></li>
-                    </ul>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item51" th:value="${mandalart.item51}"></li>
-                        <li><input th:name="item52" th:value="${mandalart.item52}"></li>
-                        <li><input th:name="item53" th:value="${mandalart.item53}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item54" th:value="${mandalart.item54}"></li>
-                        <li><input th:name="item55" th:value="${mandalart.item55}"></li>
-                        <li><input th:name="item56" th:value="${mandalart.item56}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item57" th:value="${mandalart.item57}"></li>
-                        <li><input th:name="item58" th:value="${mandalart.item58}"></li>
-                        <li><input th:name="item59" th:value="${mandalart.item59}"></li>
-                    </ul>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item61" th:value="${mandalart.item61}"></li>
-                        <li><input th:name="item62" th:value="${mandalart.item62}"></li>
-                        <li><input th:name="item63" th:value="${mandalart.item63}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item64" th:value="${mandalart.item64}"></li>
-                        <li><input th:value="${mandalart.item56}" readonly></li>
-                        <li><input th:name="item66" th:value="${mandalart.item66}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item67" th:value="${mandalart.item67}"></li>
-                        <li><input th:name="item68" th:value="${mandalart.item68}"></li>
-                        <li><input th:name="item69" th:value="${mandalart.item69}"></li>
-                    </ul>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item71" th:value="${mandalart.item71}"></li>
-                        <li><input th:name="item72" th:value="${mandalart.item72}"></li>
-                        <li><input th:name="item73" th:value="${mandalart.item73}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item74" th:value="${mandalart.item74}"></li>
-                        <li><input th:value="${mandalart.item57}" readonly></li>
-                        <li><input th:name="item76" th:value="${mandalart.item76}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item77" th:value="${mandalart.item77}"></li>
-                        <li><input th:name="item78" th:value="${mandalart.item78}"></li>
-                        <li><input th:name="item79" th:value="${mandalart.item79}"></li>
-                    </ul>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item81" th:value="${mandalart.item81}"></li>
-                        <li><input th:name="item82" th:value="${mandalart.item82}"></li>
-                        <li><input th:name="item83" th:value="${mandalart.item83}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item84" th:value="${mandalart.item84}"></li>
-                        <li><input th:value="${mandalart.item58}" readonly></li>
-                        <li><input th:name="item86" th:value="${mandalart.item86}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item87" th:value="${mandalart.item87}"></li>
-                        <li><input th:name="item88" th:value="${mandalart.item88}"></li>
-                        <li><input th:name="item89" th:value="${mandalart.item89}"></li>
-                    </ul>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <ul>
-                        <li><input th:name="item91" th:value="${mandalart.item91}"></li>
-                        <li><input th:name="item92" th:value="${mandalart.item92}"></li>
-                        <li><input th:name="item93" th:value="${mandalart.item93}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item94" th:value="${mandalart.item94}"></li>
-                        <li><input th:value="${mandalart.item59}" readonly></li>
-                        <li><input th:name="item96" th:value="${mandalart.item96}"></li>
-                    </ul>
-                    <ul>
-                        <li><input th:name="item97" th:value="${mandalart.item97}"></li>
-                        <li><input th:name="item98" th:value="${mandalart.item98}"></li>
-                        <li><input th:name="item99" th:value="${mandalart.item99}"></li>
-                    </ul>
-                </ul>
-            </td>
-        </tr>
-    </table>
 
-    <input id="btn-save" type="submit" value="Submit" /> <input type="reset" value="Reset" />
+        <table class="mother_table">
+            <tr>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item11" th:value="${mandalart.item11}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item12" th:value="${mandalart.item12}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item13" th:value="${mandalart.item13}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item14" th:value="${mandalart.item14}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item51}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item16" th:value="${mandalart.item16}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item17" th:value="${mandalart.item17}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item18" th:value="${mandalart.item18}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item19" th:value="${mandalart.item19}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item21" th:value="${mandalart.item21}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item22" th:value="${mandalart.item22}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item23" th:value="${mandalart.item23}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item24" th:value="${mandalart.item24}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item52}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item26" th:value="${mandalart.item26}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item27" th:value="${mandalart.item27}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item28" th:value="${mandalart.item28}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item29" th:value="${mandalart.item29}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item31" th:value="${mandalart.item31}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item32" th:value="${mandalart.item32}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item33" th:value="${mandalart.item33}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item34" th:value="${mandalart.item34}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item53}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item36" th:value="${mandalart.item36}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item37" th:value="${mandalart.item37}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item38" th:value="${mandalart.item38}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item39" th:value="${mandalart.item39}"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item41" th:value="${mandalart.item41}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item42" th:value="${mandalart.item42}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item43" th:value="${mandalart.item43}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item44" th:value="${mandalart.item44}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item54}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item46" th:value="${mandalart.item46}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item47" th:value="${mandalart.item47}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item48" th:value="${mandalart.item48}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item49" th:value="${mandalart.item49}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="text-white bg-success" th:name="item51" th:value="${mandalart.item51}"></td>
+                            <td class="square"><input class="bg-success" th:name="item52" th:value="${mandalart.item52}"></td>
+                            <td class="square"><input class="bg-success" th:name="item53" th:value="${mandalart.item53}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-success" th:name="item54" th:value="${mandalart.item54}"></td>
+                            <td class="square"><input class="bg-danger" th:name="item55" th:value="${mandalart.item55}"></td>
+                            <td class="square"><input class="bg-success" th:name="item56" th:value="${mandalart.item56}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-success" th:name="item57" th:value="${mandalart.item57}"></td>
+                            <td class="square"><input class="bg-success" th:name="item58" th:value="${mandalart.item58}"></td>
+                            <td class="square"><input class="bg-success" th:name="item59" th:value="${mandalart.item59}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item61" th:value="${mandalart.item61}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item62" th:value="${mandalart.item62}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item63" th:value="${mandalart.item63}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item64" th:value="${mandalart.item64}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item56}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item66" th:value="${mandalart.item66}"> </td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item67" th:value="${mandalart.item67}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item67" th:value="${mandalart.item68}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item69" th:value="${mandalart.item69}"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item71" th:value="${mandalart.item71}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item72" th:value="${mandalart.item72}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item73" th:value="${mandalart.item73}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item74" th:value="${mandalart.item74}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item57}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item76" th:value="${mandalart.item76}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item77" th:value="${mandalart.item77}"></td>
+                            <td class="square"><input class="bg-primary"th:name="item78" th:value="${mandalart.item78}"></td>
+                            <td class="square"><input class="bg-primary"th:name="item79" th:value="${mandalart.item79}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary"         th:name="item81" th:value="${mandalart.item81}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item82" th:value="${mandalart.item82}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item83" th:value="${mandalart.item83}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item84" th:value="${mandalart.item84}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item58}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item86" th:value="${mandalart.item86}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item87" th:value="${mandalart.item87}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item88" th:value="${mandalart.item88}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item89" th:value="${mandalart.item89}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="mother_square">
+                    <table>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item91" th:value="${mandalart.item91}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item92" th:value="${mandalart.item92}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item93" th:value="${mandalart.item93}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item94" th:value="${mandalart.item94}"></td>
+                            <td class="square"><input class="bg-success" th:value="${mandalart.item59}" readonly></td>
+                            <td class="square"><input class="bg-primary" th:name="item96" th:value="${mandalart.item96}"></td>
+                        </tr>
+                        <tr>
+                            <td class="square"><input class="bg-primary" th:name="item97" th:value="${mandalart.item97}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item99" th:value="${mandalart.item98}"></td>
+                            <td class="square"><input class="bg-primary" th:name="item99" th:value="${mandalart.item99}"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+
+    <br>
+    <input style="width:5%;height:30px;" class="bg-primary" type="submit" value="저장" />
+    <br><br>
 </form>
 
-<div></div>
-
-<input type="button">
 
 <!-- INDEX BODY 끝 -->
 
 
-<!-- header flagment ../layout/footer.html을 수정하세요. -->
+<sciprt th:src="@{/js/bootstrap.bundle.js}"></sciprt>
+
 <div th:replace="layout/footer::footer"></div>
 
 </body>
-
-<!--<script th:inline="javascript">-->
-<!--    const mandalart = [[${mandalart}]];-->
-<!--    const parse = JSON.parse(mandalart)-->
-<!--    const itemsParse = JSON.parse(parse.items)-->
-
-<!--</script>-->
 
 </html>

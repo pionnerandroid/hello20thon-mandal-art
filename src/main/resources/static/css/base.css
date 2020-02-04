@@ -1,4 +1,43 @@
-tr td ul ul li {
-    display: inline;
-    width: 5%;
+html, body {
+    font-family: arial;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #2D3942;
+    color: white;
+}
+
+.mother_table {
+    border: 3px solid white;
+    border-spacing: 0px;
+    text-align: center;
+    margin: 35px auto 0px auto;
+}
+
+.mother_square {
+    /*border: 1px solid white;*/
+    /*border-bottom: 1px solid white;*/
+    padding: 0;
+    height: 210px;
+    width: 210px;
+}
+
+.mother_square td {
+    padding:0;
+}
+
+.square {
+    /*border: 1px solid white;*/
+    padding: 0;
+    height: 70px;
+    width: 70px;
+}
+
+input {
+    /*background-color: #2D3942;*/
+    border: 1px solid white;
+    /*border-style:none;*/
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
