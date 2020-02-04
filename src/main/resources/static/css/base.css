@@ -1,12 +1,4 @@
-/* mandal-art 테이블 구성 */
-.mandalart-table-items ul li {
-    display:inline;
-}
-
-ul li input {
-    border-style: solid;
-}
-/* 테이블 디버깅용 border */
-table tr td {
-    border-style: solid;
+tr td ul ul li {
+    display: inline;
+    width: 5%;
 }

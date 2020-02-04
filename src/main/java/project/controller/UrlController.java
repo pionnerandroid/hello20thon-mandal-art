@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import project.mandalart.domain.mandalart.MandalArt;
+import project.mandalart.dto.MandalArtSaveRequestDto;
 import project.mandalart.service.MandalArtService;
 
 @RequiredArgsConstructor
@@ -23,7 +23,6 @@ public class UrlController {
     public String mandalArt(Model model) {
         Long id = mandalArtService.createNewMandarArt();
         model.addAttribute("mandalart", mandalArtService.findMandalArtById(id));
-        System.out.println(mandalArtService.findMandalArtById(id).toString());
         return "mandalart/mandalart";
     }
 
@@ -35,11 +34,10 @@ public class UrlController {
     }
 
     @PostMapping("/mandalart")
-    public String savemandalArt(@ModelAttribute MandalArt mandalArt,
+    public String savemandalArt(@ModelAttribute MandalArtSaveRequestDto requestDto,
                                 Model model) {
-        System.out.println(mandalArt.toString());
-//        model.addAttribute("mandalart",
-//                mandalArtService.update(mandalArt.getId(), mandalArt));
+        mandalArtService.update(requestDto.getId(), requestDto);
+        model.addAttribute("mandalart", mandalArtService.findMandalArtById(requestDto.getId()));
         return "mandalart/mandalart";
     }
 }

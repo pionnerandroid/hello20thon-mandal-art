@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.mandalart.domain.BaseTimeEntity;
+import project.mandalart.dto.MandalArtSaveRequestDto;
 
 import javax.persistence.*;
 
@@ -320,7 +321,79 @@ public class MandalArt extends BaseTimeEntity {
         this.item99 = item99;
     }
 
-    public Long getId() {
-        return this.id;
+    public void update(MandalArtSaveRequestDto requestDto) {
+        this.item11 = requestDto.getItem11();
+        this.item12 = requestDto.getItem12();
+        this.item13 = requestDto.getItem13();
+        this.item14 = requestDto.getItem14();
+        this.item16 = requestDto.getItem16();
+        this.item17 = requestDto.getItem17();
+        this.item18 = requestDto.getItem18();
+        this.item19 = requestDto.getItem19();
+        this.item21 = requestDto.getItem21();
+        this.item22 = requestDto.getItem22();
+        this.item23 = requestDto.getItem23();
+        this.item24 = requestDto.getItem24();
+        this.item26 = requestDto.getItem26();
+        this.item27 = requestDto.getItem27();
+        this.item28 = requestDto.getItem28();
+        this.item29 = requestDto.getItem29();
+        this.item31 = requestDto.getItem31();
+        this.item32 = requestDto.getItem32();
+        this.item33 = requestDto.getItem33();
+        this.item34 = requestDto.getItem34();
+        this.item36 = requestDto.getItem36();
+        this.item37 = requestDto.getItem37();
+        this.item38 = requestDto.getItem38();
+        this.item39 = requestDto.getItem39();
+        this.item41 = requestDto.getItem41();
+        this.item42 = requestDto.getItem42();
+        this.item43 = requestDto.getItem43();
+        this.item44 = requestDto.getItem44();
+        this.item46 = requestDto.getItem46();
+        this.item47 = requestDto.getItem47();
+        this.item48 = requestDto.getItem48();
+        this.item49 = requestDto.getItem49();
+        this.item51 = requestDto.getItem51();
+        this.item52 = requestDto.getItem52();
+        this.item53 = requestDto.getItem53();
+        this.item54 = requestDto.getItem54();
+        this.item55 = requestDto.getItem55();
+        this.item56 = requestDto.getItem56();
+        this.item57 = requestDto.getItem57();
+        this.item58 = requestDto.getItem58();
+        this.item59 = requestDto.getItem59();
+        this.item61 = requestDto.getItem61();
+        this.item62 = requestDto.getItem62();
+        this.item63 = requestDto.getItem63();
+        this.item64 = requestDto.getItem64();
+        this.item66 = requestDto.getItem66();
+        this.item67 = requestDto.getItem67();
+        this.item68 = requestDto.getItem68();
+        this.item69 = requestDto.getItem69();
+        this.item71 = requestDto.getItem71();
+        this.item72 = requestDto.getItem72();
+        this.item73 = requestDto.getItem73();
+        this.item74 = requestDto.getItem74();
+        this.item76 = requestDto.getItem76();
+        this.item77 = requestDto.getItem77();
+        this.item78 = requestDto.getItem78();
+        this.item79 = requestDto.getItem79();
+        this.item81 = requestDto.getItem81();
+        this.item82 = requestDto.getItem82();
+        this.item83 = requestDto.getItem83();
+        this.item84 = requestDto.getItem84();
+        this.item86 = requestDto.getItem86();
+        this.item87 = requestDto.getItem87();
+        this.item88 = requestDto.getItem88();
+        this.item89 = requestDto.getItem89();
+        this.item91 = requestDto.getItem91();
+        this.item92 = requestDto.getItem92();
+        this.item93 = requestDto.getItem93();
+        this.item94 = requestDto.getItem94();
+        this.item96 = requestDto.getItem96();
+        this.item97 = requestDto.getItem97();
+        this.item98 = requestDto.getItem98();
+        this.item99 = requestDto.getItem99();
     }
 }
