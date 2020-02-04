@@ -13,9 +13,10 @@ public class MandalArtService {
     private final MandalArtRepository mandalArtRepository;
 
     @Transactional
-    public MandalArt save(Long userId, Long mandalId) {
-        mandalArtRepository.save(new MandalArt());
-        return mandalArtRepository.findById(mandalId).orElseThrow(()->new IllegalArgumentException("잘못된 ID입니다!"));
+    public MandalArt update(Long id, MandalArt mandalArt) {
+        MandalArt mandal = mandalArtRepository.findById(id).orElseThrow(()->new IllegalArgumentException("잘못된 ID입니다!"));
+        mandal = mandalArt;
+        return mandal;
     }
 
     @Transactional

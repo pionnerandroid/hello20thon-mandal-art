@@ -23,6 +23,7 @@ public class UrlController {
     public String mandalArt(Model model) {
         Long id = mandalArtService.createNewMandarArt();
         model.addAttribute("mandalart", mandalArtService.findMandalArtById(id));
+        System.out.println(mandalArtService.findMandalArtById(id).toString());
         return "mandalart/mandalart";
     }
 
@@ -30,6 +31,15 @@ public class UrlController {
     public String mandalArt(@PathVariable("userId") Long userId,
                             @PathVariable("mandalId") Long mandalId, Model model) {
         model.addAttribute("mandalart", mandalArtService.findMandalArtById(mandalId));
+        return "mandalart/mandalart";
+    }
+
+    @PostMapping("/mandalart")
+    public String savemandalArt(@ModelAttribute MandalArt mandalArt,
+                                Model model) {
+        System.out.println(mandalArt.toString());
+//        model.addAttribute("mandalart",
+//                mandalArtService.update(mandalArt.getId(), mandalArt));
         return "mandalart/mandalart";
     }
 }

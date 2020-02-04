@@ -23,223 +23,223 @@ public class MandalArt extends BaseTimeEntity {
     @Column
     private String routeId;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item11;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item12;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item13;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item14;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item16;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item17;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item18;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item19;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item21;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item22;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item23;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item24;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item26;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item27;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item28;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item29;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item31;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item32;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item33;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item34;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item36;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item37;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item38;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item39;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item41;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item42;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item43;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item44;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item46;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item47;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item48;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item49;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item51;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item52;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item53;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item54;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item55;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item56;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item57;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item58;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item59;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item61;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item62;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item63;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item64;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item66;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item67;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item68;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item69;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item71;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item72;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item73;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item74;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item76;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item77;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item78;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item79;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item81;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item82;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item83;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item84;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item86;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item87;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item88;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item89;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item91;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item92;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item93;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item94;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item96;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item97;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item98;
 
-    @Column(nullable = true)
+    @Column(length = 60)
     private String item99;
 
     @Builder
@@ -318,5 +318,9 @@ public class MandalArt extends BaseTimeEntity {
         this.item97 = item97;
         this.item98 = item98;
         this.item99 = item99;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 }
