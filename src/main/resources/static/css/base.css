@@ -57,3 +57,13 @@ input {
     word-wrap: break-word;
     word-break: break-word;
 }
+
+textarea {
+    border: 1px solid white;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    text-align:center;
+    word-wrap: break-word;
+    word-break: break-word;
+}
